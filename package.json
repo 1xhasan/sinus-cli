@@ -1,0 +1,37 @@
+{
+  "name": "@1x_hasan/sinus-cli-test",
+  "version": "1.1.4",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "sinus-cli-test": "dist/index.js"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "publish": "npm run build && npm publish",
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9",
+    "@types/node": "^24.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.98.4",
+    "chalk": "^5.6.2",
+    "commander": "^14.0.1",
+    "inquirer": "^12.9.6",
+    "tabtab": "^3.0.2"
+  }
+}
