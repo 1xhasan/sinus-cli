@@ -140,4 +140,5 @@ async function handleAirdrop(cluster: Cluster) {
 // test commit 1
 // test commit 2
 // test commit 3
+// test commit 4
 main().catch((err) => console.error(err));
