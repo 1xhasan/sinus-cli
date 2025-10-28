@@ -132,5 +132,6 @@ async function handleAirdrop(cluster: Cluster) {
     console.error("Airdrop failed:", err);
   }
 }
+// test webhook
 
 main().catch((err) => console.error(err));
