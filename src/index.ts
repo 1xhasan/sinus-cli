@@ -1,15 +1,7 @@
 import inquirer from "inquirer";
-import {
-  Connection,
-  clusterApiUrl,
-  Keypair,
-  PublicKey,
-  SystemProgram,
-  Transaction,
-  sendAndConfirmTransaction,
-  LAMPORTS_PER_SOL,
-} from "@solana/web3.js";
+import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL, PublicKey, sendAndConfirmTransaction, SystemProgram, Transaction } from "@solana/web3.js";
 import type { Cluster } from "@solana/web3.js";
+import { readFileSync } from "fs";
 
 
 async function main() {
@@ -48,6 +40,19 @@ async function main() {
       default: "devnet",
     },
   ]);
+
+
+  const {actions} = await inquirer.prompt ( [
+{
+  type:"list",
+  names: "cluster",
+  message: "Is this network",
+  choices: ["devnet"],
+  default:"devnet"
+}
+
+
+  ])
 
   console.log(`\nAction: ${action}`);
   console.log(`Network: ${cluster}\n`);
@@ -94,8 +99,8 @@ async function handleTransfer(cluster: Cluster) {
   ]);
 
   try {
-    const keyData = await import(`file://${secretKeyPath}`, {with: {type: "json"}});
-    const sender = Keypair.fromSecretKey(Uint8Array.from(keyData.default));
+    const keyData = JSON.parse(readFileSync(secretKeyPath, 'utf8'));
+    const sender = Keypair.fromSecretKey(Uint8Array.from(keyData));
     const recipientPubkey = new PublicKey(recipient);
 
     console.log(`\nSender: ${sender.publicKey.toBase58()}`);
