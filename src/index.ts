@@ -12,7 +12,7 @@ async function main() {
     {
       type: "input",
       name: "keyword",
-      message: 'Type "solana" to continue:',
+      message: 'Type "solana" to continue: to the users:',
       validate: (input) =>
         input.trim().toLowerCase() === "solana" ||
         'You must type exactly "solana" to continue.',
@@ -137,5 +137,5 @@ async function handleAirdrop(cluster: Cluster) {
     console.error("Airdrop failed:", err);
   }
 }
-
+// test commit 1
 main().catch((err) => console.error(err));
